@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,body {
+    height: 100%;
+    background-color: rgb(231, 231, 231);
+}
+
+header {
+    background-color: rgb(150, 150, 151);
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main.main {
+    flex: 1 1 auto;
+    height: 100%;
+}
+
+.row, .container-main {
+    height: 100%;
+    margin-left: 20px;
+}

@@ -1,0 +1,13 @@
+<?
+
+return [
+    'host' => 'MySQL-8.2',
+    'username' => 'root',
+    'pass' => '',
+    'dbname' => 'blog',//название бд к которой подключаемся
+    'charset' => 'utf8',
+    'options' => [
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,//параметр, который говорит в каком виде мы будем получать резльтат, тут в
+        // в виде ассоциативного массива
+    ]
+];
