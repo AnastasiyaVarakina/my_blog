@@ -1,4 +1,5 @@
 <?
+require_once MODELS."/validator.php";
 
 $title = $header = "New Post";
 
@@ -24,8 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ]
     ];
 
+    $validator = new Validator();
+    $validator->validate($data, $rules);
+    dd($validator->gerError());
 
-    $errors = [];
 }
 
 require_once V_POSTS . '/create.tmpl.php';

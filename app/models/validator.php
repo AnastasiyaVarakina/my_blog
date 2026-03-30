@@ -88,10 +88,10 @@ class Validator
     }
 
     protected function min($value, $rule_value) {
-        return $value >= $rule_value;
+        return ln($value) >= $rule_value;
     }
 
     protected function max($value, $rule_value) {
-        return $value <= $rule_value;
+        return ln($value) <= $rule_value;
     }
 }
