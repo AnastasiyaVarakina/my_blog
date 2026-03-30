@@ -19,11 +19,15 @@ function abort($code = 404) {
 }
 
 
+// фильтрация входящих пост запросов
+// принимает список ключей которые мы ожидаем
 function load_request_data(array $fillable) {
-    $data = [];
+    $data = [];//результирующий массив
+    // перебираем весь массив пост 
     foreach($_POST as $key=>$value) {
+        // если ключ присутствует в массиве пост то мы добавляем пару ключ значение 
         if(in_array($key, $fillable)){
-            $data[$key] = $value;
+            $data[$key] = $value;//отфильтрованный массив
         }
     }
 

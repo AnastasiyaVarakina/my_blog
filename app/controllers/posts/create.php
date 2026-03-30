@@ -3,7 +3,7 @@
 $title = $header = "New Post";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $fillable = ['title', 'content', 'description']; //то что ожидаем
+    $fillable = ['title', 'content', 'description']; //то что ожидаем  - белый список
     $data = load_request_data($fillable);
 
     $rules = [
