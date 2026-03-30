@@ -60,6 +60,7 @@ class DB
 
 
 
+    // массив с ответами на запрос
     public function query($sql, $params = []) : DB {
         $this->stmt = $this->conn->prepare($sql);
         $this->stmt->execute($params);
@@ -74,6 +75,8 @@ class DB
         return $this->stmt->fetch();
     }
 
+
+    // метод получения одной записи
     public function findOrAbort() {
         $result =  $this->find();
         if (!$result) {
