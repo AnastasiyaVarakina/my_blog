@@ -13,7 +13,7 @@ function dd($array)
 }
 
 function abort($code = 404) {
-    http_response_code($code);
+    http_response_code($code);//получаем ошибку и выводим страницу отображения этой оишбки
     require_once VIEWS."/404.tmpl.php";
     die;
 }
