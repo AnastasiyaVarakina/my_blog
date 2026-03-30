@@ -27,7 +27,7 @@ function load_request_data(array $fillable) {
     foreach($_POST as $key=>$value) {
         // если ключ присутствует в массиве пост то мы добавляем пару ключ значение 
         if(in_array($key, $fillable)){
-            $data[$key] = $value;//отфильтрованный массив
+            $data[$key] = trim(htmlspecialchars($value));//отфильтрованный массив
         }
     }
 
@@ -35,3 +35,8 @@ function load_request_data(array $fillable) {
 
     return $data;
 }
+
+function ln($string) {
+    return mb_strlen($string, 'UTF-8');
+}
+
