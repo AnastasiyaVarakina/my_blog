@@ -49,3 +49,18 @@ function old($fieldname)
     }
     else return '';
 }
+
+
+// перенаправление
+function redirect($url = ' ') {
+    // если урл не пустое то :
+    if($url) {
+        $redirect = $url;
+    }
+    else {
+        $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : PATH;
+    }
+
+    header("Location:{$redirect}");
+    die;
+}

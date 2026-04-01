@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
             $sql = "INSERT INTO `posts`(`title`, `descroption`, `content`) VALUES (:title, :description, :content)";
             $db->query($sql, $data);
+            redirect("/");
             // перенаправиться на главную страницу
         }
         catch (PDOException $e) {
@@ -43,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     }
     else {
-        require_once V_POSTS . '/create.tmpl.php';
+        redirect("posts/create");
     }
 
 
