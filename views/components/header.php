@@ -38,3 +38,5 @@
             </div>
         </nav>
     </header>
+
+<? get_alerts(); ?>

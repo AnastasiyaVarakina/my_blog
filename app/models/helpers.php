@@ -46,21 +46,58 @@ function old($fieldname)
 {
     if (isset($_POST[$fieldname])) {
         return htmlspecialchars($_POST[$fieldname]);
-    }
-    else return '';
+    } else return '';
 }
 
 
 // перенаправление
-function redirect($url = ' ') {
+function redirect($url = '')
+{
     // если урл не пустое то :
-    if($url) {
+    if ($url) {
         $redirect = $url;
-    }
-    else {
+    } else {
         $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : PATH;
     }
 
     header("Location:{$redirect}");
     die;
+}
+
+
+
+function get_alerts()
+{
+    // виды запросов
+    $alerts = [
+        'success',
+        'danger',
+        'info',
+        'warning'
+    ];
+
+    if (!empty($_SESSION)) {
+
+        // сам алерт, который выводт нужно сообщения по типу. и будет выводить наш как раз так
+        // из сессии что мы создали, сообщение
+        function get_alert($type)
+        {
+        echo "<div class='alert alert-{$type} alert-dismissible fade show' role='alert'>
+        {$_SESSION[$type]}
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
+        };
+
+        // перебираем массив по ключам, где есть нам нужные
+        // если наш ключ есть в массиве alerts(выше)
+        // то выводим сообщение
+
+        foreach ($_SESSION as $key => $value) {
+            echo " <div class='container py-3'>";
+            if (in_array($key, $alerts)) {
+                get_alert($key);
+            }
+            echo "</div>";
+        }
+    }
 }

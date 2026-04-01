@@ -35,11 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
             $sql = "INSERT INTO `posts`(`title`, `descroption`, `content`) VALUES (:title, :description, :content)";
             $db->query($sql, $data);
+            //записываем данные в массив сессии
+            $_SESSION['success'] = 'Пост успешно создан';
             redirect("/");
             // перенаправиться на главную страницу
         }
         catch (PDOException $e) {
-            dump([$e]);
+            // dump([$e]);
+            $_SESSION['danger'] = 'Создать пост не получилось :(';
         }
 
     }
