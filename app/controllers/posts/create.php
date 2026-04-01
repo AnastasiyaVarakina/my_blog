@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $validator = new Validator();
     $validator->validate($data, $rules);
-    dd($validator->gerError());
+    dump($validator->gerError());
 
 }
 

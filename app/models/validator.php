@@ -12,36 +12,23 @@ class Validator
     ];
 
     // должен получить массив правил и отфильтрованный массив
+    // data - массив значений
     public function validate($data = [], $rules = []): Validator
     {
         // надо узнать есть ли для этого поля правила валидации
-
-        $rules = [
-            'title' => [
-                'required' => true,
-                'min' => 3,
-                'max' => 10,
-            ],
-            'description' => [
-                'required' => true,
-                'min' => 3,
-                'max' => 10,
-            ],
-            'content' => [
-                'required' => true,
-                'min' => 5,
-                'max' => 10,
-            ]
-        ];
 
         foreach ($data as $fieldname => $field_data) {
             // что мы ищем и где мы ищем
             if (in_array($fieldname, array_keys($rules))) {
                 // валидируем
+                // объект $field
                 $this->checkAndValidate([
                     'fieldname' => $fieldname,
                     'field_data' => $field_data,
                     'rules' => $rules[$fieldname]
+                    // взять из массив rules элемент, ключом которого яв-ся имя текущего поля
+                    // и записываем в ассоциативный массив под ключом 
+                    // те мы берем в массиве rules значения(правила) которые совпадают с названием поля элемента массива, который мы сейчас перебираем
                 ]);
             }
         }
@@ -49,8 +36,15 @@ class Validator
     }
 
     private function checkAndValidate($field) {
+        // field - Это массив с ключами  имя поля значение поля и правило к этому полю
         foreach($field["rules"] as $rule_name => $rule_value) {
-            // если такой валидатор есть
+            // берем из 3 объекта название правила(типо заголовок формы) и само правило
+            // $rule_value) Тк тут массив внутри мы получаем типо по названию поля свое правило например
+            // ['required' => true, 'min' => 3, 'max' => 10]
+            // если в массиве есть такое название правила
+
+            // если нашла в массиве валидаторов по названию находим нужный массив и 
+            // внутри этого массива рассматривам ключи, если они совпадают то :
             if(in_array($rule_name, $this->validatorsList)) {
                 // если не прошли валидацию то добавляем  ошибку
                 if(!call_user_func_array([$this, $rule_name], [$field['field_data'],$rule_value])) {
