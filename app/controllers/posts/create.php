@@ -27,7 +27,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $validator = new Validator();
     $validator->validate($data, $rules);
-    dump($validator->gerError());
+    // dump($validator->gerError());
+
+    // если у нас есть ошибки то нам надо оставаться на той же странице
+    // если пост успешно создался, то нам надо куда то перейти
+    if(!$validator->hasErrors()) {
+        try {
+            $sql = "INSERT INTO `posts`(`title`, `descroption`, `content`) VALUES (:title, :description, :content)";
+            $db->query($sql, $data);
+            // перенаправиться на главную страницу
+        }
+        catch (PDOException $e) {
+            dump([$e]);
+        }
+
+    }
+    else {
+        require_once V_POSTS . '/create.tmpl.php';
+    }
+
+
 
 }
 
