@@ -3,7 +3,7 @@ class Validator
 {
     private $errors = []; //ошибки которые будет собирать валидатор
 
-    private $validatorsList = ['require', 'min', 'max']; //список всех сущ валидаторов
+    private $validatorsList = ['required', 'min', 'max']; //список всех сущ валидаторов
 
     private $messages = [
         'required' => 'The :fieldname: field is required',
@@ -85,7 +85,7 @@ class Validator
 
 
     // возвращают true или false. В зависимости от того выполняется ли действие
-    protected function required($value, $rule_value) {
+    protected function required($value) {
         return !empty($value);//если он не пустой значит мы прошли валидацию
 
     }
@@ -97,4 +97,21 @@ class Validator
     protected function max($value, $rule_value) {
         return ln($value) <= $rule_value;
     }
+
+
+    public function listErrors($fieldname) {
+        // есть ли ошибки для указанного поля
+        if(isset($this->errors[$fieldname])) {
+            // если есть то будем возвращать ошибку
+            $er_mes = '<ul style="color:red;">';
+            foreach ($this->errors[$fieldname] as $er) {
+                $er_mes .= '<li>'. htmlspecialchars($er). '</li>';
+            }
+            $er_mes .= '</ul>';
+            return $er_mes;
+        }
+// если нет то возвращаем пустую строку
+        return '';
+    }
 }
+
