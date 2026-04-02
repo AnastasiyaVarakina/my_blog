@@ -96,6 +96,7 @@ function get_alerts()
             echo " <div class='container py-3'>";
             if (in_array($key, $alerts)) {
                 get_alert($key);
+                unset($_SESSION[$key]);
             }
             echo "</div>";
         }
