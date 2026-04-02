@@ -36,14 +36,17 @@ function load_request_data(array $fillable)
     return $data;
 }
 
+
+// считает кол-во знаков в строке, по определенной кодировке 
 function ln($string)
 {
     return mb_strlen($string, 'UTF-8');
 }
 
-
+// сохраняет в полях введенные значения
 function old($fieldname)
 {
+    // если было отправлено методом пост то возвращаем значение поля по названию
     if (isset($_POST[$fieldname])) {
         return htmlspecialchars($_POST[$fieldname]);
     } else return '';
