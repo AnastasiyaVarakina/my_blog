@@ -35,6 +35,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="login">Sign In</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="registr">Registration</a>
+                        </li>
 
                     </ul>
                 </div>

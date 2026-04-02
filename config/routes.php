@@ -10,5 +10,6 @@ $routes = [
     // 'contacts' => CONTROLLERS.'/contacts.php' можно и так
     'posts/create' => C_POSTS.'/create.php',
     'posts/show' => C_POSTS.'/show.php',
-    'login' => CONTROLLERS.'/users/login.php',
+    'login' => C_USER.'/login.php',
+    'registr' => C_USER.'/registr.php',
 ];
