@@ -1,4 +1,5 @@
 <?
+global $db;
 $title = "POST";
 
 // извлекает параметр id из url 

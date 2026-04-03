@@ -41,6 +41,14 @@ require_once MODELS.'/DB.php';
 
 $db = DB::getInstance()->getConnection($db_config);
 // первый вызов он создает объект, дальше он уже будет просто возвращать существующий объект
-require_once MODELS."/router.php";
+// require_once MODELS."/router.php";
 // роутер должен стоять всегда в конце
 
+
+// подключили маршруты
+require_once MODELS."/Router.class.php";
+
+$router = new Router();
+require_once CONFIG."/routes.php";
+
+$router->match();

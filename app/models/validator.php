@@ -104,7 +104,7 @@ class Validator
 
     //приходит значение поля и название поля с которым сравнивать
     protected function match($value, $rule_value) {
-        return $value = $this->data[$rule_value];
+        return $value == $this->data[$rule_value];
     }
 
     // метод для почты

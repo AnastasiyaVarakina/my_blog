@@ -1,4 +1,5 @@
 <?
+global $db;
 require_once MODELS."/validator.php";
 
 $title = $header = "Registrarion user";

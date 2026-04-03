@@ -30,7 +30,7 @@
                             <a class="nav-link" href="posts/create">New post</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contacts.php">COntacts</a>
+                            <a class="nav-link" href="contacts">COntacts</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="login">Sign In</a>

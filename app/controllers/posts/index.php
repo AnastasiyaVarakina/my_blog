@@ -1,4 +1,5 @@
 <?
+global $db;
 $title = "Blog home";
 $header = "Recent Post";
 

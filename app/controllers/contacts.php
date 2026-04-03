@@ -1,4 +1,5 @@
 <?
+global $db;
 $title = "Contacts us";
 $header = "Contacts";
 
