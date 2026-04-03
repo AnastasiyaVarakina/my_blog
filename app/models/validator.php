@@ -3,12 +3,15 @@ class Validator
 {
     private $errors = []; //ошибки которые будет собирать валидатор
 
-    private $validatorsList = ['required', 'min', 'max']; //список всех сущ валидаторов
+    private $data = [];//массив с данными которые мы будем проверять
+    private $validatorsList = ['required', 'min', 'max', 'match', 'email']; //список всех сущ валидаторов
 
     private $messages = [
         'required' => 'The :fieldname: field is required',
         'min' => 'The :fieldname: field must be at least :rulevalue: characters',
         'max' => 'The :fieldname: field must be maximum :rulevalue: characters',
+        'email' => '',
+        'match' => '',
     ];
 
     // должен получить массив правил и отфильтрованный массив
@@ -17,6 +20,7 @@ class Validator
     {
         // надо узнать есть ли для этого поля правила валидации
 
+        $this->data = $data;//копируем данные
         foreach ($data as $fieldname => $field_data) {
             // что мы ищем и где мы ищем
             if (in_array($fieldname, array_keys($rules))) {
@@ -96,6 +100,17 @@ class Validator
 
     protected function max($value, $rule_value) {
         return ln($value) <= $rule_value;
+    }
+
+    //приходит значение поля и название поля с которым сравнивать
+    protected function match($value, $rule_value) {
+        return $value = $this->data[$rule_value];
+    }
+
+    // метод для почты
+    protected function email($value, $rule_value)
+    {
+        return filter_var($value, FILTER_VALIDATE_EMAIL);
     }
 
 

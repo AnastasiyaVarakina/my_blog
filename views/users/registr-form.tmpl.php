@@ -8,8 +8,8 @@
                 <h3><?= $header ?? '' ?></h3>
                 <form action="" method="POST">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name">
+                        <label for="username" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="username" name="username">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">email</label>
