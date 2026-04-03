@@ -14,7 +14,7 @@
                             <h5 class="card-title"><a href="posts/show?id=<?= $post['posts_id'] ?>"><?= $post['title'] ?></a></h5>
                             <p class="card-text"><?= $post['descroption'] ?></p>
                             <p class="card-text"><small class="text-body-secondary">Last updated <?= $post['updated_at'] ?></small></p>
-                            <a href="#" class="btn bg-dark-subtle">Go somewhere</a>
+                            <a class="btn bg-dark-subtle" href="update?id=<?= $post['posts_id'] ?>" >Update</a>
                         </div>
                     </div>
 

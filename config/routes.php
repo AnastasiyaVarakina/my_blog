@@ -12,4 +12,5 @@ $routes = [
     'posts/show' => C_POSTS.'/show.php',
     'login' => C_USER.'/login.php',
     'registr' => C_USER.'/registr.php',
+    'update' => C_POSTS.'/update.php',
 ];
