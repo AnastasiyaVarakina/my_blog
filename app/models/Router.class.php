@@ -29,8 +29,10 @@ class Router {
         $matches = false;
 
         foreach($this->routes as $route) {
+            // сравниваем с переменные из конструктора, которые мы уже заполнили
             if($route['uri'] === $this->uri && $route['method'] === $this->method) {
                 if(!file_exists(CONTROLLERS.$route['controller'])) {
+                    // не найдем нужный контроллер по такому uri
                     break;
                 }
                 else {
