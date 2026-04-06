@@ -7,11 +7,11 @@ class Validator
     private $validatorsList = ['required', 'min', 'max', 'match', 'email']; //список всех сущ валидаторов
 
     private $messages = [
-        'required' => 'The :fieldname: field is required',
-        'min' => 'The :fieldname: field must be at least :rulevalue: characters',
-        'max' => 'The :fieldname: field must be maximum :rulevalue: characters',
-        'email' => '',
-        'match' => '',
+        'required' => 'Поле :fieldname: является обязательным',
+        'min' => 'В поле :fieldname: должно быть не менее :rulevalue: символов',
+        'max' => 'В поле :fieldname: должно быть не более :rulevalue: символов',
+        'email' => 'В поле :fieldname: неправильно введена почта',
+        'match' => 'Пароли не совпадают',
     ];
 
     // должен получить массив правил и отфильтрованный массив
@@ -108,7 +108,7 @@ class Validator
     }
 
     // метод для почты
-    protected function email($value, $rule_value)
+    protected function email($value)
     {
         return filter_var($value, FILTER_VALIDATE_EMAIL);
     }
