@@ -36,3 +36,8 @@ $router->post('registr', '/users/registr.php');
 
 $router->get('contacts', '/contacts.php');
 
+// добавила способы попадания на юзеров
+$router->get('user', '/users/showuser.php');
+$router->post('user', '/users/showuser.php');
+$router->get('updateuser', '/users/updateuser.php');
+$router->put('updateuser', '/users/updateuser.php');
